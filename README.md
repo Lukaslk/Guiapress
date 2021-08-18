@@ -2,9 +2,9 @@
 
 # Description
 
-Um API ao qual eu consumei com EJS e possui persistência de dados.
+API Consumada com EJS e persistência de dados.
 
-
+![Guiapress](https://github.com/Lukaslk/Guiapress/blob/main/projeto.gif) 
 
 # Packages
 
@@ -28,5 +28,3 @@ Um API ao qual eu consumei com EJS e possui persistência de dados.
 1. Faça o download ou clone este repositório;
 2. Abra seu Terminal/Prompt e navegue até o diretório em que foi depositado;
 3. Inicie o server com "node index.js";
-
-
