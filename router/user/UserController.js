@@ -47,8 +47,8 @@ router.post("/user/create", function(req,res) {
                 port: process.env.PORT,
                 secure: false, 
                 auth: {
-                  user: "3f1f0ed1a5b1f0", 
-                  pass: "46732e97ec285e", 
+                  user: "", 
+                  pass: "", 
                 },
               });
             
@@ -90,8 +90,7 @@ const user =  await User.findOne({confirmationCode: req.query.token})
         user.status = "Active"
         user.save()
     }
-
-        res.redirect("/login")
+    res.redirect("/login")
 })
 
 router.get("/resend-email", (req,res) => {
@@ -102,12 +101,10 @@ router.post("/refresh-token", (req, res) => {
     let email = req.body.email
 
     User.findOne({email}).then(user => {
-console.log(email)
         if(!user) {
             res.locals.error = req.flash("error", "E-mail não localizado")
             res.redirect("/admin/user/create")
         }
-
         if(user) {
             const token = jwt.sign(
                 {email: email},process.env.JWTSECRET,{expiresIn:'30m'})
@@ -117,8 +114,8 @@ console.log(email)
                 port: process.env.PORT,
                 secure: false, 
                 auth: {
-                  user: "3f1f0ed1a5b1f0", 
-                  pass: "46732e97ec285e", 
+                  user: "", 
+                  pass: "", 
                 },
               });
             
@@ -214,8 +211,8 @@ router.post("/reset", (req, res) => {
             port: process.env.PORT,
             secure: false, 
             auth: {
-                user: "3f1f0ed1a5b1f0",
-                pass: "46732e97ec285e",
+                user: "",
+                pass: "",
             },
         });
             
