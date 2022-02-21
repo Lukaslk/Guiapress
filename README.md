@@ -1,30 +1,34 @@
 # Guiapress
 
-# Description
+Um site que copia as funcionalidades de um blog. Criado para testar as habilidades e conhecimentos adiquiridos em Front end e back end.
 
-API Consumada com EJS e persistência de dados.
+# 🛠️ Observação
+
+O código está passando por manutenção, tendo as seguinte ambições:
+
+* Tornar o código mais limpo tendo em vista como horizonte o principio SOLID;
+* Tornar o Front end responsivo.
+
+# 🔨 Funcionalidades do projeto
+
+O blog possui as seguintes possibilidades:
+
+* Cadastrar com validação por e-mail;
+* Criar e editar artigos e categorias;
+* Artigos podem ser estilizados;
+* Persistencia em banco de dados;
 
 ![Guiapress](https://github.com/Lukaslk/Guiapress/blob/main/projeto.gif) 
 
-# Packages
+✔️ Técnicas e tecnologias utilizadas
 
-* bcryptjs: ^2.4.3,
-* connect-flash: ^0.1.1,
-* cookie-parser: ^1.4.5",
-* cors: ^2.8.5,
-* dotenv: ^10.0.0,
-* ejs: ^3.1.6,
-* express: ^4.17.1,
-* express-session: ^1.17.1,
-* jsonwebtoken: ^8.5.1,
-* mongodb: ^3.6.9,
-* mongoose: ^5.12.14,
-* nodemailer: ^6.6.1,
-* nodemon: ^2.0.7,
-* slugify: ^1.5.1
+* Banco de dados Nosql(Mongodb);
+* Express;
+* nodemailer para simular o envio de e-mail.
 
-# Getting Started
+📁 Abrir e rodar o projeto
 
 1. Faça o download ou clone este repositório;
 2. Abra seu Terminal/Prompt e navegue até o diretório em que foi depositado;
-3. Inicie o server com "node index.js";
+3. instale as dependencias: Se for com o Yarn yarn install, se for com o NPM npm install;
+4. Inicie com node index.js
