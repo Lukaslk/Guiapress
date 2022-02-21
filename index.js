@@ -12,7 +12,7 @@ require("dotenv").config()
 const homeRouterController = require('./router/HomeRouterController')
 const categoriesController = require('./router/categories/CategoriesController')
 const articlesController = require('./router/articles/ArticlesController')
-const userController = require('./router/user/UserController')
+const userController = require('./router/UserController')
 
 //recognize the incoming Request Object as strings or arrays. 
 app.use(express.urlencoded({ extended: false}));
@@ -57,39 +57,39 @@ app.use(function(req, res, next) {
     next();
 });
 
-//Não está retornando apenas os artigos com determinada slug
-app.get("/:slug", (req, res) => {
-    let slug = req.params.slug
-    Article.findOne({slug: slug})
-    .then(article => {
-        if(article != undefined) {
-            Category.find().then(categories => {
-                res.render("article", {article: article, categories: categories})
-            })
-        } else {
-            res.redirect("/")
-        }
-    }).catch(err => {
-        res.redirect("/")
-    })
-})
+//Em manutenção
+// app.get("/:slug", (req, res) => {
+//     let slug = req.params.slug
+//     Article.findOne({slug: slug})
+//     .then(article => {
+//         if(article != undefined) {
+//             Category.find().then(categories => {
+//                 res.render("article", {article: article, categories: categories})
+//             })
+//         } else {
+//             res.redirect("/")
+//         }
+//     }).catch(err => {
+//         res.redirect("/")
+//     })
+// })
 
-app.get("/:category/:slug", (req, res) => {
-    let slug = req.params.slug
-    Category.findOne({slug: slug})
-    .then(category => {
-        if(category != undefined) {
-            Category.find().then(categories => {
-                Article.find().then(articles => {
-                    res.render("index", {articles: articles, categories: categories})
-                })
-            })
-        } else {
-            res.redirect("/")
-        }
-    }).catch(err => {
-        res.redirect("/")
-    })
-})
+// app.get("/:category/:slug", (req, res) => {
+//     let slug = req.params.slug
+//     Category.findOne({slug: slug})
+//     .then(category => {
+//         if(category != undefined) {
+//             Category.find().then(categories => {
+//                 Article.find().then(articles => {
+//                     res.render("index", {articles: articles, categories: categories})
+//                 })
+//             })
+//         } else {
+//             res.redirect("/")
+//         }
+//     }).catch(err => {
+//         res.redirect("/")
+//     })
+// })
 
 app.listen(5000, ()=>{ console.log("O servidor está rodando em http://localhost:5000")})

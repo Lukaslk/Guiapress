@@ -6,7 +6,7 @@ const slugify = require('slugify')
 const adminAuth = require("../../middlewares/adminAuth")
 const verify = require("../../middlewares/jwtAuth")
 
-router.get('/admin/articles', adminAuth, verify, (req, res)=> {
+router.get('/admin/articles',adminAuth, verify, (req, res)=> {
     Article.find().then(articles  =>{
         Category.find().then(categories => {
             res.render("admin/articles/index", {categories: categories, articles: articles})
