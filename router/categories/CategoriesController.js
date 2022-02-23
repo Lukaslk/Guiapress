@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Category = require('../../models/Category')
+const Category = require('../../models/Category/Category')
 const slugify = require('slugify')
 const adminAuth = require("../../middlewares/adminAuth")
 const verify = require("../../middlewares/jwtAuth")

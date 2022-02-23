@@ -1,10 +1,7 @@
 const express = require("express")
 const router = express.Router()
-const User = require("../models/User/User")
 const Production = require("../models/User/Production")
-const bcrypt = require('bcrypt')
 require("dotenv").config()
-const jwt = require('jsonwebtoken')
 
 router.get("/admin/user/create", (req,res) => {
     res.render("admin/users/create", {error: req.flash("error"), success: req.flash("success")})

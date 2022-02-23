@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const Article = require("../models/Article")
-const Category = require('../models/Category')
+const Article = require("../models/Articles/Article")
+const Category = require('../models/Category/Category')
 const adminAuth = require("../middlewares/adminAuth")
 const verify = require("../middlewares/jwtAuth")
 

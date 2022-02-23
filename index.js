@@ -5,8 +5,8 @@ const session = require("express-session")
 const flash = require("connect-flash")
 const cors = require("cors")
 const cookieParser = require('cookie-parser')
-const Article = require('./models/Article')
-const Category = require('./models/Category')
+const Article = require('./models/Articles/Article')
+const Category = require('./models/Category/Category')
 require("dotenv").config()
 
 const homeRouterController = require('./router/HomeRouterController')
@@ -57,39 +57,39 @@ app.use(function(req, res, next) {
     next();
 });
 
-//Em manutenção
-// app.get("/:slug", (req, res) => {
-//     let slug = req.params.slug
-//     Article.findOne({slug: slug})
-//     .then(article => {
-//         if(article != undefined) {
-//             Category.find().then(categories => {
-//                 res.render("article", {article: article, categories: categories})
-//             })
-//         } else {
-//             res.redirect("/")
-//         }
-//     }).catch(err => {
-//         res.redirect("/")
-//     })
-// })
+// Em manutenção
+app.get("/:slug", (req, res) => {
+    let slug = req.params.slug
+    Article.findOne({slug: slug})
+    .then(article => {
+        if(article != undefined) {
+            Category.find().then(categories => {
+                res.render("article", {article: article, categories: categories})
+            })
+        } else {
+            res.redirect("/")
+        }
+    }).catch(err => {
+        res.redirect("/")
+    })
+})
 
-// app.get("/:category/:slug", (req, res) => {
-//     let slug = req.params.slug
-//     Category.findOne({slug: slug})
-//     .then(category => {
-//         if(category != undefined) {
-//             Category.find().then(categories => {
-//                 Article.find().then(articles => {
-//                     res.render("index", {articles: articles, categories: categories})
-//                 })
-//             })
-//         } else {
-//             res.redirect("/")
-//         }
-//     }).catch(err => {
-//         res.redirect("/")
-//     })
-// })
+app.get("/:category/:slug", (req, res) => {
+    let slug = req.params.slug
+    Category.findOne({slug: slug})
+    .then(category => {
+        if(category != undefined) {
+            Category.find().then(categories => {
+                Article.find().then(articles => {
+                    res.render("index", {articles: articles, categories: categories})
+                })
+            })
+        } else {
+            res.redirect("/")
+        }
+    }).catch(err => {
+        res.redirect("/")
+    })
+})
 
 app.listen(5000, ()=>{ console.log("O servidor está rodando em http://localhost:5000")})
