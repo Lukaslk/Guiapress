@@ -1,4 +1,3 @@
-const conn = require('./database/database')
 const express = require('express')
 const app = express()
 const session = require("express-session")
@@ -10,8 +9,8 @@ const Category = require('./models/Category/Category')
 require("dotenv").config()
 
 const homeRouterController = require('./router/HomeRouterController')
-const categoriesController = require('./router/categories/CategoriesController')
-const articlesController = require('./router/articles/ArticlesController')
+const categoriesController = require('./router/CategoriesController')
+const articlesController = require('./router/ArticlesController')
 const userController = require('./router/UserController')
 
 //recognize the incoming Request Object as strings or arrays. 

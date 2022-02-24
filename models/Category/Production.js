@@ -11,15 +11,20 @@ class Production {
         this.category = category
     }
 
-    async createArticle() {
+    async createCategory() {
         this.validation()
         const result = await BankMethod.create({
             title: this.title,
-            slug: this.slug,
-            body: this.body,
-            categoryId: this.categoryId
+            slug: this.slug
         })
         this.id = result.id
+    }
+
+    async searchIdAndEdit(){
+        const found = await BankMethod.edit(this.id)
+        this.id = found.categories.id
+        this.title = found.categories.title
+        this.slug = found.categories.slug
     }
 
     async searchIdAndDelete(){
@@ -27,29 +32,15 @@ class Production {
         this.id = found.id
     }
 
-    async searchIdAndEdit(){
-        const found = await BankMethod.edit(this.id)
-        this.id = found.article.id
-        this.title = found.article.title
-        this.slug = found.article.slug
-        this.body = found.article.body
-        this.categoryId = found.article.categoryId
-        {
-            this.category = found.categories
-        }
-    }
-
     async updateById(){
-        const found = await BankMethod.update(this.id, this.title, this.body, this.categoryId, this.slug)
+        const found = await BankMethod.update(this.id, this.title)
         this.id = found.id
         this.title = found.title
         this.slug = found.slug
-        this.body = found.body
-        this.categoryId = found.categoryId
     }
 
     validation () {
-        const fields =  ['title', 'body', 'categoryId']
+        const fields =  ['title']
 
         fields.forEach(field => {
             const value = this[field]
