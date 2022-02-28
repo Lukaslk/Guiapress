@@ -6,7 +6,7 @@ Um site que copia as funcionalidades de um blog. Criado para testar as habilidad
 
 O código está passando por manutenção, tendo as seguinte ambições:
 
-* Tornar o código mais limpo tendo em vista como horizonte o principio SOLID;
+* Arrumar retorno dos erros;
 * Tornar o Front end responsivo.
 
 # 🔨 Funcionalidades do projeto
