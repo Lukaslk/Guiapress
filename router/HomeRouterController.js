@@ -1,26 +1,27 @@
 const express = require('express')
 const router = express.Router()
-const Article = require("../models/Articles/Article")
-const Category = require('../models/Category/Category')
+const BankMethod = require('../models/Home/BankMethod')
 const adminAuth = require("../middlewares/adminAuth")
 const verify = require("../middlewares/jwtAuth")
 
-router.get('/', (req, res) => {
-    
-    Article.find().sort({_id: -1}).limit(4).then(articles =>{
-        Category.find().then(categories => {
-            res.render("indexHome", {articles: articles, categories: categories})
-        })
-    })
+router.get('/', async (req, res) => {
+    try{
+        const result = await BankMethod.getAll()
+        res.render("indexHome", {categories: result.categories, articles: result.articles })
+    } catch(e) {
+        res.locals.error = req.flash("error", `${e}`)
+        res.redirect("/admin/articles")
+    }
 })
 
-router.get('/home', adminAuth, verify, (req, res) => {
-
-    Article.find().sort({_id: -1}).limit(4).then(articles =>{
-        Category.find().then(categories => {
-            res.render("indexHomeconn", {articles: articles, categories: categories})
-        })
-    })
+router.get('/home', adminAuth, verify, async (req, res) => {
+    try{
+        const result = await BankMethod.getAll()
+        res.render("indexHomeconn", {categories: result.categories, articles: result.articles })
+    } catch(e) {
+        res.locals.error = req.flash("error", `${e}`)
+        res.redirect("/admin/articles")
+    }
 })
 
 module.exports = router
