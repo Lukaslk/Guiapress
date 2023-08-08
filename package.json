@@ -1,10 +1,14 @@
 {
   "name": "guiapress",
   "version": "1.0.0",
-  "description": "Um blog com painel adinistrativo",
+  "description": "Um blog com painel administrativo",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon ./dist/js/index.js",
+    "copy-views": "cpy app/views/**/* dist/js/views",
+    "copy-assets": "cpy app/assets/**/* dist/js/assets",
+    "copy-css": "cpy app/css/**/* dist/js/css",
+    "compile": "tsc && npm run copy-views && npm run copy-assets && npm run copy-css"
   },
   "author": "Lucas R.",
   "license": "ISC",
@@ -19,9 +23,18 @@
     "express-session": "^1.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.9",
-    "mongoose": "^5.12.14",
+    "mongoose": "^5.13.19",
     "nodemailer": "^6.6.1",
-    "nodemon": "^2.0.7",
-    "slugify": "^1.5.1"
+    "reflect-metadata": "^0.1.13",
+    "slugify": "^1.5.1",
+    "tsyringe": "^4.8.0"
+  },
+  "devDependencies": {
+    "@types/connect-flash": "^0.0.37",
+    "@types/express": "^4.17.17",
+    "@types/express-session": "^1.17.7",
+    "cpy-cli": "^5.0.0",
+    "nodemon": "^2.0.22",
+    "typescript": "^5.1.6"
   }
 }
